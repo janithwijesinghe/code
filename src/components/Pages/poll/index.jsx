@@ -23,7 +23,7 @@ const Poll = () => {
 
     const addPoll = async (e) => {
         e.preventDefault();
-        console.log("[addPoll HIT]");
+        localStorage.removeItem("voted");
         const payload = {title: pollDetails.title, questions: pollDetails.answers};
         await axios
             .put("/polls/all", payload)
@@ -109,7 +109,7 @@ const Poll = () => {
                     <div style={{fontSize: "16px"}}>
                         {answer.title}
                     </div>
-                    <div  style={{fontSize: "20px"}}>
+                    <div style={{fontSize: "20px"}}>
                         {getPercentage(answer.count).toFixed(1)}%
                     </div>
                 </div>
